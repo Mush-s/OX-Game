@@ -1,13 +1,42 @@
+import { useState } from "react";
 import Cell from "../Cell/Cell";
 
-const Game = () => {
-  const cellValues = ["X", "X", "X", "O", "X", "O", "X", "O", "X"];
-  const winningCombination = [0, 1, 2];
+const Game = (props) => {
+  const [cellValues, setCellValues] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+  const [xisNext, setXIsNext] = useState(true);
+  const winningCombination = [];
+  const isCellEmpty = (cellIndex) => cellValues[cellIndex] === "";
+
+  const cellClicked = (cellIndex) => {
+    if (isCellEmpty(cellIndex)) {
+      const newCellValues = [...cellValues];
+
+      newCellValues[cellIndex] = xisNext ? "X" : "O";
+      setCellValues(newCellValues);
+      setXIsNext(!xisNext);
+    }
+  };
 
   const cells = cellValues.map((value, index) => {
-    const canHighlight =
-      winningCombination && winningCombination.indexOf(index) >= 0;
-    return <Cell key={index} value={value} canHighlight={canHighlight} />;
+    const canHighlight = winningCombination.indexOf(index) >= 0;
+    return (
+      <Cell
+        key={index}
+        value={value}
+        canHighlight={canHighlight}
+        onClick={() => cellClicked(index)}
+      />
+    );
   });
   return (
     <div id="game">

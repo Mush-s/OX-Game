@@ -7,12 +7,12 @@ const Cell = (props) => {
   });
 
   const cellContentClasses = classNames({
-    'cell-content': true,
+    "cell-content": true,
     populated: props.value,
   });
 
   return (
-    <button className={cellClasses}>
+    <button className={cellClasses} onClick={props.onClick}>
       <span className={cellContentClasses}>{props.value}</span>
     </button>
   );

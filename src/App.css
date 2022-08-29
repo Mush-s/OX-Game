@@ -34,7 +34,9 @@ h1 {
   box-shadow: var(--box-shadow);
 }
 
-.cell:active, .cell:hover, .cell.winner {
+.cell:active,
+.cell:hover,
+.cell.winner {
   cursor: pointer;
   color: var(--content-background-color);
   background: var(--primary-highlight-gradient);
@@ -44,7 +46,8 @@ h1 {
   overflow: hidden;
   width: 0;
   height: 0;
-  transition: width var(--selection-animation-duration), height var(--selection-animation-duration);
+  transition: width var(--selection-animation-duration),
+    height var(--selection-animation-duration);
 }
 
 .cell-content.populated {
@@ -63,6 +66,9 @@ h1 {
   background: var(--modal-overlay-color);
 }
 
+#modal-overlay.modal-open {
+  display: grid;
+}
 #game-result-modal {
   display: grid;
   grid-row-gap: 76vmin;

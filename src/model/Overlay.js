@@ -1,4 +1,6 @@
-const Overlay = () => {
+import classNames from "classnames";
+
+const Overlay = (props) => {
   return (
     <div id="modal-overlay">
       <div id="game-result-modal">
